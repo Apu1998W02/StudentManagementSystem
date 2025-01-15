@@ -1,0 +1,41 @@
+<div class="students-record">
+  
+  <student-details-student-search-bar></student-details-student-search-bar>
+
+  <table class="table table-striped record-table">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Student ID</th>
+        <th>Student Name</th>
+        <th>Department</th>
+        <th>Current Semester</th>
+        <th>Elective Subject 1 </th>
+        <th>Elective Subject 2</th>
+        <th>Elective Subject 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (student of students; track student.name; let i=$index){
+        <tr>
+          <th>{{i+1}}</th>
+          <td> <ngb-highlight [result]="student.SID" [term]="filter.value" /> <!--{{student.SID}} --> </td>
+          <td> 
+            <img [src]=student.studentImage class="me-2" style="width: 50px">
+            <ngb-highlight [result]="student.name" [term]="filter.value" />
+            <!--{{student.name}}-->
+          </td>
+          <td> <ngb-highlight [result]="student.department" [term]="filter.value" /> <!--{{student.department}} --> </td>
+          <td> <ngb-highlight [result]="student.semester" [term]="filter.value" /> <!--{{student.semester}}--> </td>
+          <td> <ngb-highlight [result]="student.elective1" [term]="filter.value" /> <!--{{student.elective1}}--> </td>
+          <td> <ngb-highlight [result]="student.elective2" [term]="filter.value" /> <!--{{student.elective2}}--> </td>
+          <td> <ngb-highlight [result]="student.elective3" [term]="filter.value" /> <!--{{student.elective3}}--> </td>
+        </tr>
+      } @empty{
+        <td> No Student Details to Show </td>
+      }
+      
+    </tbody>
+  </table>
+
+</div>

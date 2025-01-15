@@ -1,7 +1,2 @@
-.students-record{
-    padding: 16px;
-}
-
-.record-table{
-    border: 1px solid whitesmoke;
-}
+@import './student-table/student-table.component.scss';
+@import './student-search-bar/student-search-bar.component.scss';
