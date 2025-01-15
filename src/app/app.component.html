@@ -1,4 +1,14 @@
 <div class="students-record">
+  
+  <form>
+    <div class="mb-3 row">
+      <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label"> Search text</label>
+      <div class="col-xs-3 col-sm-auto">
+        <input class="form-control" type="text" [formControl]="filter" />
+      </div>
+    </div>
+  </form>
+  
   <table class="table table-striped record-table">
     <thead>
       <tr>
@@ -16,15 +26,17 @@
       @for (student of students; track student.name; let i=$index){
         <tr>
           <th>{{i+1}}</th>
-          <td> {{student.SID}} </td>
-          <td> {{student.name}}
-          <img [src]=student.studentImage class="me-2" style="width: 50px">  
+          <td> <ngb-highlight [result]="student.SID" [term]="filter.value" /> <!--{{student.SID}} --> </td>
+          <td> 
+            <img [src]=student.studentImage class="me-2" style="width: 50px">
+            <ngb-highlight [result]="student.name" [term]="filter.value" />
+            <!--{{student.name}}-->
           </td>
-          <td> {{student.department}} </td>
-          <td> {{student.semester}} </td>
-          <td> {{student.elective1}} </td>
-          <td> {{student.elective2}} </td>
-          <td> {{student.elective3}} </td>
+          <td> <ngb-highlight [result]="student.department" [term]="filter.value" /> <!--{{student.department}} --> </td>
+          <td> <ngb-highlight [result]="student.semester" [term]="filter.value" /> <!--{{student.semester}}--> </td>
+          <td> <ngb-highlight [result]="student.elective1" [term]="filter.value" /> <!--{{student.elective1}}--> </td>
+          <td> <ngb-highlight [result]="student.elective2" [term]="filter.value" /> <!--{{student.elective2}}--> </td>
+          <td> <ngb-highlight [result]="student.elective3" [term]="filter.value" /> <!--{{student.elective3}}--> </td>
         </tr>
       } @empty{
         <td> No Student Details to Show </td>
